@@ -102,20 +102,13 @@ $('#boardText').append(
 });
 
 
+//reset functionality
+$(".resetInput").on("click", function(event){
+    location.reload();
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//auto refresh per 1 minute passed
+	//updates the train data upon refresh
+	setInterval("window.location.reload()", 60000);
 });
 
