@@ -20,6 +20,38 @@ var firebaseConfig = {
 
  var database = firebase.database();
 
+ //store data off on click of the submit button
+
+ $('submitInput').on('click', function(event) {
+    var trainName = $('#nameInput').val().trim();
+    var destinationInput = $('#destInput').val().trim();
+    var numberInput = $('#numberInput').val().trim();
+    var timeInput = $('#timeInput').val().trim();
+    var frequencyInput = $('#freqInput').val().trim();
+});
+
+//validation of input
+
+if(trainName != "" &&
+    numberInput != "" && 
+    destinationInput != "" &&
+    timeInput != "" &&
+    frequencyInput != "" &&) {
+        //use the collected input (above) and port it to firebase db
+
+        database.ref().push({
+            name: trainName,
+            number: numberInput,
+            destination: destinationInput,
+            time: timeInput,
+            frequency: frequencyInput
+        });
+    } else {
+        alert("Value does not exist, please enter in valid train data");
+        $('input').val("");
+        return false;
+    }
+
 
 
 
