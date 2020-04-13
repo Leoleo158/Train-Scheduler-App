@@ -83,7 +83,12 @@ database.ref().on("child_added", function (childSnapshot) {
     var timeRemaining = timeDifference % frequency;
     
     //time until next train
-	var timeAway = frequency - timeRemaining;
+    var timeAway = frequency - timeRemaining;
+    
+    //next train arrival
+    var nextArrival = moment().add(timeAway, "minutes");
+    
+    var arrivalDisplay = moment(nextArrival).format("HHmm");
 }
 
 
