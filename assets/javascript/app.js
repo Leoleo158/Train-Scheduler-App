@@ -32,11 +32,12 @@ var firebaseConfig = {
 
 //validation of input
 
-if(trainName != "" &&
-    numberInput != "" && 
+    if (trainName != "" &&
+    numberInput != "" &&
     destinationInput != "" &&
-    timeInput != "" &&
-    frequencyInput != "" &&) {
+    timeInput.length === 4 &&
+    frequencyInput != "") {
+            
         //use the collected input (above) and port it to firebase db
 
         database.ref().push({
@@ -52,8 +53,19 @@ if(trainName != "" &&
         return false;
     }
 
+    $('input').val("");
 
 
+//grab child snapshot of data in FB
+
+database.ref().on("child_added", function (childSnapshot) {
+    var name = childSnapshot.val().name;
+    var number = childSnapshot.val().number;
+    var destination = childSnapshot.val().destination;
+    var time = childSnapshot.val().time;
+    var frequency = childSnapshot.val().frequency;
+
+}
 
 
 
