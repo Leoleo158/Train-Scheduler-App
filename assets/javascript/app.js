@@ -65,6 +65,13 @@ database.ref().on("child_added", function (childSnapshot) {
     var time = childSnapshot.val().time;
     var frequency = childSnapshot.val().frequency;
 
+
+    //time format
+
+    var frequency = parseInt(frequency);
+    var currentTime = moment();
+    var dateConvert = moment(childSnapshot.val().time, "HHmm").subtract(1, "years");
+    var trainTime = moment(dateConvert).format("HHmm");
 }
 
 
