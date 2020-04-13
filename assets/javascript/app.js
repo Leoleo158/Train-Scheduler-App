@@ -54,7 +54,7 @@ var firebaseConfig = {
     }
 
     $('input').val("");
-
+});
 
 //grab child snapshot of data in FB
 
@@ -89,7 +89,20 @@ database.ref().on("child_added", function (childSnapshot) {
     var nextArrival = moment().add(timeAway, "minutes");
     
     var arrivalDisplay = moment(nextArrival).format("HHmm");
-}
+
+//append data to table
+
+$('#boardText').append(
+    "<tr><td id='nameDisplay'>" + childSnapshot.val().name + 
+		"<td id='numberDisplay'>" + childSnapshot.val().number + 
+		"<td id='destinationDisplay'>" + childSnapshot.val().destination + 
+		"<td id='frequencyDisplay'>" + childSnapshot.val().frequency +
+		"<td id='arrivalDisplay'>" + arrivalDisplay + 
+		"<td id='awayDisplay'>" + timeAway + " minutes until arrival" + "</td></tr>");
+});
+
+
+
 
 
 
